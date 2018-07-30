@@ -19,6 +19,9 @@ chmod +x /usr/local/bin/docker-compose
 #   TEST DOCKER-COMPOSE
 docker-compose --version
 
+#   Strong DiffieHellman
+openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
+
 #   ADD USER
 adduser rowsdower --gecos "Dillon Christensen,1,1,1" --disabled-password
 echo "rowsdower:aliveiNtusc0n" | chpasswd
