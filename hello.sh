@@ -59,7 +59,5 @@ cp ./newnginx.sh /usr/local/bin/newnginx.sh
 chmod +x /usr/local/bin/newnginx.sh
 
 #   FAREWELL!
-echo "su - rowsdower"
-echo "nano ~/.ssh/authorized_keys"
 echo "be excellent to each other"
 echo "party on dudes"
