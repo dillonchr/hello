@@ -14,7 +14,7 @@ if [ -f "$conf_path" ]; then
     read -p "Do you want to remove its configs and run new anyway? [yn]" answer
     case $answer in
         [yY]* ) rm $conf_path
-            break;;
+            ;;
         [nN]* ) echo "have a nice day"
             exit;;
     esac
@@ -51,9 +51,9 @@ if [ "$?" -ne "0" ]; then
 fi
 
 # seems to have added it successfully
-ln -s $conf_path /etc/nginx/sites-enabled/
+ln -s -f $conf_path /etc/nginx/sites-enabled/
 systemctl restart nginx
-mkdir -p /var/www/$domain 
+mkdir -p "/var/www/${domain}/.well-known/"
 certbot certonly -a webroot --webroot-path=/var/www/$domain -d $domain
 
 if [ "$?" -ne "0" ]; then
