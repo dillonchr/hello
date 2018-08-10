@@ -35,7 +35,7 @@ server {
         proxy_cache_bypass \$http_upgrade;
     }
 
-    location ~ /.well-known {
+    location /.well-known {
         alias /var/www/$domain/.well-known;
         allow all;
     }
@@ -86,7 +86,7 @@ server {
         proxy_cache_bypass \$http_upgrade;
     }
 
-    location ~ /.well-known {
+    location /.well-known {
         alias /var/www/$domain/.well-known;
         allow all;
     }
