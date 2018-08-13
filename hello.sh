@@ -9,6 +9,9 @@ add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(
 add-apt-repository "deb http://ftp.debian.org/debian stretch-backports main"
 apt update && apt install -y docker-ce certbot
 
+#   INSTALL CERTBOT AUTORENEW CRON
+(crontab -l 2>/dev/null; echo "1 6 * * * certbot renew --post-hook \"systemctl reload nginx\"") | crontab -
+
 #   TEST DOCKER
 docker run busybox:1.24 echo "docker is up and running"
 
