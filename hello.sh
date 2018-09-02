@@ -1,7 +1,16 @@
 #!/bin/bash
 
 #   INSTALL TOOLS: docker utils, git, tmux, nginx
-apt install -y apt-transport-https ca-certificates curl gnupg2 software-properties-common git tmux nginx vim
+apt install -y ufw apt-transport-https ca-certificates curl gnupg2 software-properties-common git tmux nginx vim
+
+echo "IPV6=yes" >> /etc/ufw/ufw.conf
+ufw default deny incoming
+ufw default allow outgoing
+ufw allow ssh
+ufw allow https
+#   ALLOW MOSH
+ufw allow 60000:61000/udp
+ufw enable
 
 #   INSTALL DOCKER
 curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
