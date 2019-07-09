@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #   INSTALL TOOLS: docker utils, git, tmux, nginx
-apt install -y ufw apt-transport-https ca-certificates curl gnupg2 software-properties-common git tmux nginx vim
+apt install -y ufw apt-transport-https ca-certificates curl gnupg2 software-properties-common git tmux nginx vim mosh
 
 echo "IPV6=yes" >> /etc/ufw/ufw.conf
 ufw default deny incoming
