@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #   INSTALL TOOLS: docker utils, git, tmux, nginx
-apt install -y ufw apt-transport-https ca-certificates curl gnupg2 software-properties-common git tmux nginx vim mosh
+apt install -y ufw apt-transport-https ca-certificates curl gnupg2 software-properties-common git tmux nginx vim mosh zsh
 
 echo "IPV6=yes" >> /etc/ufw/ufw.conf
 ufw default deny incoming
@@ -72,6 +72,9 @@ systemctl restart ssh
 su -c 'mkdir -p /home/rowsdower/.ssh' - rowsdower
 su -c 'cat /git/hello/pub.keys > /home/rowsdower/.ssh/authorized_keys' - rowsdower
 su -c 'chmod 600 /home/rowsdower/.ssh/authorized_keys' - rowsdower
+su -c 'cat /git/hello/tmux.conf > /home/rowsdower/.tmux.conf' - rowsdower
+chsh -s $(which zsh) rowsdower
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" "" --unattended
 
 #   INJECT HELPERS
 cp ./newnginx.sh /usr/local/bin/newnginx.sh
