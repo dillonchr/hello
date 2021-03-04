@@ -39,6 +39,9 @@ adduser rowsdower --gecos "Dillon Christensen,1,1,1" --disabled-password
 echo "rowsdower:aliveiNtusc0n" | chpasswd
 usermod -a -G sudo rowsdower
 
+# add user to docker group for sudo-less docker commands!
+addgroup -a rowsdower docker
+
 #   CONFIGURE SSH
 cat - > /etc/ssh/sshd_config <<SSHD
 PermitRootLogin no
